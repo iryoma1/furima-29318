@@ -1,24 +1,63 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column            | Type      | Options     |
+| ----------------- | --------- | ----------- |
+| nickname          | string    | null: false |
+| email             | string    | null: false |
+| password          | string    | null: false |
+| family_name       | string    | null: false |
+| first_name        | string    | null: false |
+| family_name_kana  | string    | null: false |
+| first_name_kana   | string    | null: false |
+| birth_year        | integer   | null: false |
+| birth_month       | integer   | null: false |
+| birth_day         | integer   | null: false |
 
-* Ruby version
+### Association
+- has_many :users_items
+- has_many :items,through: users_items
+- has_many :comments
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| image         | string  | null: false |
+| name          | string  | null: false |
+| description   | string  | null: false |
+| category      | string  | null: false |
+| status        | string  | null: false |
+| shopping_cost | string  | null: false |
+| area          | string  | null: false |
+| shopping_dey  | date    | null: false |
+| price         | integer | null: false |
 
-* Database creation
+### Association
+- has_many :users_items
+- has_many :users, through: users_items
+- has_many :messages
 
-* Database initialization
+## users_items テーブル
 
-* How to run the test suite
+| Column  | Type    | Options     |
+| ------- | ------- | ----------- |
+| user_id | integer | null: false |
+| item_id | integer | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* Deployment instructions
+## comments テーブル
 
-* ...
+| Column  | Type    | Options     |
+| ------- | ------- | ----------- |
+| user_id | integer | null: false |
+| item_id | integer | null: false |
+| comment | integer | null: false |
+
+### Association
+- belongs_to :user
+_ belongs_to :item
