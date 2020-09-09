@@ -11,33 +11,26 @@
 | first_name        | string    | null: false |
 | family_name_kana  | string    | null: false |
 | first_name_kana   | string    | null: false |
-| birth_year        | integer   | null: false |
-| birth_month       | integer   | null: false |
-| birth_day         | integer   | null: false |
+| birth_data        | date      | null: false |
 
 ### Association
 - has_many :users_items
 - has_many :items,through: users_items
-- has_many :comments
+
 
 ## items テーブル
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| image         | string  | null: false |
 | name          | string  | null: false |
-| description   | string  | null: false |
-| category      | string  | null: false |
-| status        | string  | null: false |
-| shopping_cost | string  | null: false |
-| area          | string  | null: false |
-| shopping_dey  | date    | null: false |
+| description   | text    | null: false |
 | price         | integer | null: false |
 
 ### Association
-- has_many :users_items
+- has_one :users_items
+- has_one :addresses
 - has_many :users, through: users_items
-- has_many :messages
+
 
 ## users_items テーブル
 
@@ -50,14 +43,16 @@
 - belongs_to :user
 - belongs_to :item
 
-## comments テーブル
+## addresses
 
-| Column  | Type    | Options     |
-| ------- | ------- | ----------- |
-| user_id | integer | null: false |
-| item_id | integer | null: false |
-| comment | integer | null: false |
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| postal_code  | string  | null: false |
+| prefecture   | string  | null: false |
+| city         | string  | null: false |
+| address      | string  | null: false |
+| building     | string  |             |
+| phone number | string  | null: false |
 
 ### Association
-- belongs_to :user
-_ belongs_to :item
+- belongs_to :item
