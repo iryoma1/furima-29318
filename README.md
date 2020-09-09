@@ -14,25 +14,32 @@
 | birth_data        | date      | null: false |
 
 ### Association
-- has_many :users_items
-- has_many :items,through: users_items
+- has_many :items
+- has_one :purchase
 
-
-## items テーブル
+## items テーブル 
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | name          | string  | null: false |
 | description   | text    | null: false |
+| category      | integer | null: false |
+| status        | integer | null: false |
+| shopping_cost | integer | null: false |
+| area          | integer | null: false |
+| shopping_day  | integer | null: false |
 | price         | integer | null: false |
 
 ### Association
-- has_one :users_items
-- has_one :addresses
-- has_many :users, through: users_items
+- has_many :users
+- has_one :purchase
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :shopping_cost
+- belongs_to_active_hash :area 
+- belongs_to_active_hash :shopping_day
 
-
-## users_items テーブル
+## purchase テーブル
 
 | Column  | Type    | Options     |
 | ------- | ------- | ----------- |
@@ -42,17 +49,20 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- 
 
-## addresses
+## addresses テーブル
 
 | Column       | Type    | Options     |
 | ------------ | ------- | ----------- |
 | postal_code  | string  | null: false |
-| prefecture   | string  | null: false |
+| prefecture   | integer | null: false |
 | city         | string  | null: false |
 | address      | string  | null: false |
 | building     | string  |             |
 | phone number | string  | null: false |
 
 ### Association
-- belongs_to :item
+- belongs_to :purchase
+- belongs_to_active_hash :prefecture
+
