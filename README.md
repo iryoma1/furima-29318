@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :items
-- has_one :purchase
+- has_many :purchase
 
 ## items テーブル 
 
@@ -31,7 +31,7 @@
 | price         | integer | null: false |
 
 ### Association
-- has_many :users
+- belongs_to :users
 - has_one :purchase
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
@@ -49,7 +49,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- 
+- has_one: address
 
 ## addresses テーブル
 
