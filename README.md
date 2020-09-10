@@ -40,7 +40,7 @@
 - belongs_to_active_hash :area 
 - belongs_to_active_hash :shopping_day
 
-## purchases テーブル
+## purchase テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -52,10 +52,10 @@
 - belongs_to :item
 - has_one: address
 
-## addresses テーブル
+## address テーブル
 
 | Column       | Type       | Options                        |
-| ------------ | ------- ---| ------------------------------ |
+| ------------ | ---------- | ------------------------------ |
 | postal_code  | string     | null: false                    |
 | prefecture   | integer    | null: false                    |
 | city         | string     | null: false                    |
