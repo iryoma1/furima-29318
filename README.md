@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column            | Type      | Options     |
+| ----------------- | --------- | ----------- |
+| nickname          | string    | null: false |
+| email             | string    | null: false |
+| password          | string    | null: false |
+| family_name       | string    | null: false |
+| first_name        | string    | null: false |
+| family_name_kana  | string    | null: false |
+| first_name_kana   | string    | null: false |
+| birth_data        | date      | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :purchases
 
-* System dependencies
+## items テーブル 
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| description   | text       | null: false                    |
+| category      | integer    | null: false                    |
+| status        | integer    | null: false                    |
+| shopping_cost | integer    | null: false                    |
+| area          | integer    | null: false                    |
+| shopping_day  | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| user_id       | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to :user
+- has_one :purchase
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :shopping_cost
+- belongs_to_active_hash :area 
+- belongs_to_active_hash :shopping_day
 
-* Database initialization
+## purchases テーブル
 
-* How to run the test suite
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one: address
 
-* Deployment instructions
+## addresses テーブル
 
-* ...
+| Column       | Type       | Options                        |
+| ------------ | ------- ---| ------------------------------ |
+| postal_code  | string     | null: false                    |
+| prefecture   | integer    | null: false                    |
+| city         | string     | null: false                    |
+| address      | string     | null: false                    |
+| building     | string     |                                |
+| phone number | string     | null: false                    |
+| purchase_id  | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :purchase
+- belongs_to_active_hash :prefecture
+
