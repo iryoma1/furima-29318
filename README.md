@@ -50,7 +50,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one: address
+- has_one :address
 
 ## address テーブル
 
@@ -61,7 +61,7 @@
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone number | string     | null: false                    |
+| phone_number | string     | null: false                    |
 | purchase_id  | references | null: false, foreign_key: true |
 
 ### Association
