@@ -3,4 +3,5 @@ class Item < ApplicationRecord
   has_one :purchase
 
 
+
 end
