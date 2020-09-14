@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true, format: { with: EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :password, format: {with: PASSWORD_REGEX }
+  validates :password, presence: true, format: { with: PASSWORD_REGEX }
   validates :first_name, presence: true, format: { with: NAME_REGEX }
   validates :last_name, presence: true, format: { with: NAME_REGEX }
   validates :first_name_kana, presence: true, format: { with: NAME_KANA_REGEX }
