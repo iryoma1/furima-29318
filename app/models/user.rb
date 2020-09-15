@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :purchases
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  PASSWORD_REGEX = /\A[a-z\d]{6,}+\z/
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/
   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
   NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
 
