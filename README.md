@@ -7,10 +7,10 @@
 | nickname          | string    | null: false |
 | email             | string    | null: false |
 | password          | string    | null: false |
-| family_name       | string    | null: false |
 | first_name        | string    | null: false |
-| family_name_kana  | string    | null: false |
+| last_name         | string    | null: false |
 | first_name_kana   | string    | null: false |
+| last_name_kana    | string    | null: false |
 | birth_data        | date      | null: false |
 
 ### Association
@@ -50,7 +50,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one: address
+- has_one :address
 
 ## address テーブル
 
@@ -61,7 +61,7 @@
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone number | string     | null: false                    |
+| phone_number | string     | null: false                    |
 | purchase_id  | references | null: false, foreign_key: true |
 
 ### Association
