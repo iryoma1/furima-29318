@@ -34,5 +34,72 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
+    it '商品の状態の[--]は選択できない' do
+      @item.status_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status must be other than 1")
+    end
+    it '送料の負担の[--]は選択できない' do
+      @item.shopping_cost_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shopping cost must be other than 1")
+    end
+    it '発送元の地域の[--]は選択できない' do
+      @item.area_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area must be other than 1")
+    end
+    it '送料の負担の[--]は選択できない' do
+      @item.shopping_day_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shopping day must be other than 1")
+    end
+    it '商品名が空欄だと登録できない' do
+      @item.name = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Name can't be blank")
+    end
+    it '商品の説明が空欄だと登録できない' do
+      @item.description = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Description can't be blank")
+    end
+    it 'カテゴリーが空欄だと登録できない' do
+      @item.category_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
+    it '商品の状態が空欄だと登録できない' do
+      @item.status_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status can't be blank")
+    end
+    it '配送料の負担が空欄だと登録できない' do
+      @item.shopping_cost_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shopping cost can't be blank")
+    end
+    it '発送元の地域が空欄だと登録できない' do
+      @item.area_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area can't be blank")
+    end
+    it '配送までの日数が空欄だと登録できない' do
+      @item.shopping_day_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shopping day can't be blank")
+    end
+    it '価格が空欄だと登録できない' do
+      @item.price = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price can't be blank")
+    end
+    it '商品画像が空欄だと登録できない' do
+      @item.image = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Image can't be blank")
+    end
+   
+
   end
 end
