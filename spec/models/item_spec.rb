@@ -24,5 +24,15 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
+    it '価格は半角数字でないと、登録できない' do
+      @item.price = "aaaas"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
+    end
+    it 'カテゴリーの[--]は選択できない' do
+      @item.category_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
   end
 end
