@@ -11,15 +11,15 @@ class User < ApplicationRecord
   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
   NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
 
-
-  validates :nickname, presence: true
-  validates :email, presence: true, format: { with: EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :password, presence: true, format: { with: PASSWORD_REGEX }
-  validates :first_name, presence: true, format: { with: NAME_REGEX }
-  validates :last_name, presence: true, format: { with: NAME_REGEX }
-  validates :first_name_kana, presence: true, format: { with: NAME_KANA_REGEX }
-  validates :last_name_kana, presence: true, format: { with: NAME_KANA_REGEX } 
-  validates :birth_data, presence: true
-
+  with_options presence: true do
+    validates :nickname
+    validates :email, format: { with: EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+    validates :password, format: { with: PASSWORD_REGEX }
+    validates :first_name, format: { with: NAME_REGEX }
+    validates :last_name, format: { with: NAME_REGEX }
+    validates :first_name_kana, format: { with: NAME_KANA_REGEX }
+    validates :last_name_kana, format: { with: NAME_KANA_REGEX } 
+    validates :birth_data
+  end
 end
 
