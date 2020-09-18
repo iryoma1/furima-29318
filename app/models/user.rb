@@ -6,10 +6,10 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
-  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/
-  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
-  NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/.freeze
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
   with_options presence: true do
     validates :nickname
@@ -18,8 +18,7 @@ class User < ApplicationRecord
     validates :first_name, format: { with: NAME_REGEX }
     validates :last_name, format: { with: NAME_REGEX }
     validates :first_name_kana, format: { with: NAME_KANA_REGEX }
-    validates :last_name_kana, format: { with: NAME_KANA_REGEX } 
+    validates :last_name_kana, format: { with: NAME_KANA_REGEX }
     validates :birth_data
   end
 end
-
