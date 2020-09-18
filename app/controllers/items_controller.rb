@@ -12,12 +12,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    if @item.user.id == current_user.id
-      render action: :edit
-    else
-      render action: :show
-    end
+    # @item = Item.find(params[:id])
+    # if @item.user.id == current_user.id
+    #   render action: :edit
+    # else
+    #   render action: :show
+    # end
   end
 
   def show
