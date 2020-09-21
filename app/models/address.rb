@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :purchase
-  belongs_to_active_hash :prefecture
+  # belongs_to_active_hash :prefecture
 
   # POSTAL_CODE_REGEX = /^\d{3}[-]\d{4}$/
   # PHONR_NUMBER_REGEX = /^\d{11}$/
