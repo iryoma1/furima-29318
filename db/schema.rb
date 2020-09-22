@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2020_09_15_083533) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "postal_code", null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture_id", null: false
     t.string "city", null: false
-    t.string "address", null: false
+    t.string "city_block", null: false
     t.string "building", null: false
     t.string "phone_number", null: false
     t.bigint "purchase_id", null: false
@@ -89,5 +89,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_083533) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "purchases"
   add_foreign_key "items", "users"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "users"
 end
